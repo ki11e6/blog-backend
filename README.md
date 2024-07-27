@@ -12,5 +12,5 @@
 ## Post/Comment
 - add, delete & edit of post
 - Liking/Dislikng post, posted date
-- post comment
+- post comment- add, edit & delete
 - post counts - like & disliking, views
