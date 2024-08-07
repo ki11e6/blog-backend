@@ -1,4 +1,10 @@
 import express from "express";
+import {
+  createComment,
+  getComment,
+  updateComment,
+  deleteComment,
+} from "../../controllers/comments/commentController.js";
 const commentRouter = express.Router();
 
 /*
@@ -7,16 +13,7 @@ const commentRouter = express.Router();
  * access: private
  * description: create new comment
  */
-commentRouter.route("/").post((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "comment created",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+commentRouter.route("/").post(createComment);
 
 /*
  * route: /api/v1/comments/:id
@@ -24,16 +21,7 @@ commentRouter.route("/").post((req, res) => {
  * access: public
  * description: get single comment
  */
-commentRouter.route("/:id").get((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "comment found",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+commentRouter.route("/:id").get(getComment);
 
 /*
  * route: /api/v1/comments/:id
@@ -41,16 +29,7 @@ commentRouter.route("/:id").get((req, res) => {
  * access: private
  * description: update comment
  */
-commentRouter.route("/:id").put((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "comment updated",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+commentRouter.route("/:id").put(updateComment);
 
 /*
  * route: /api/v1/comments/:id
@@ -58,15 +37,6 @@ commentRouter.route("/:id").put((req, res) => {
  * access: private
  * description: delete comment
  */
-commentRouter.route("/:id").delete((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "comment deleted",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+commentRouter.route("/:id").delete(deleteComment);
 
 export default commentRouter;

@@ -1,5 +1,11 @@
 import express from "express";
-
+import {
+  getAllCategories,
+  createCategory,
+  getCategory,
+  updateCategory,
+  deleteCategory,
+} from "../../controllers/categories/categoryController.js";
 const categoryRouter = express.Router();
 
 /*
@@ -8,16 +14,7 @@ const categoryRouter = express.Router();
  * access: public
  * description: all categories
  */
-categoryRouter.route("/all").get((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "all categories",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+categoryRouter.route("/all").get(getAllCategories);
 
 /*
  * route: /api/v1/categories
@@ -25,16 +22,7 @@ categoryRouter.route("/all").get((req, res) => {
  * access: private
  * description: create new category
  */
-categoryRouter.route("/").post((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "category created",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+categoryRouter.route("/").post(createCategory);
 
 /*
  * route: /api/v1/categories/:id
@@ -42,16 +30,7 @@ categoryRouter.route("/").post((req, res) => {
  * access: public
  * description: get category
  */
-categoryRouter.route("/:id").get((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "category found",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+categoryRouter.route("/:id").get(getCategory);
 
 /*
  * route: /api/v1/categories/:id
@@ -59,16 +38,7 @@ categoryRouter.route("/:id").get((req, res) => {
  * access: private
  * description: update category
  */
-categoryRouter.route("/:id").put((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "category updated",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+categoryRouter.route("/:id").put(updateCategory);
 
 /*
  * route: /api/v1/categories/:id
@@ -76,15 +46,6 @@ categoryRouter.route("/:id").put((req, res) => {
  * access: private
  * description: delete category
  */
-categoryRouter.route("/:id").delete((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "category deleted",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+categoryRouter.route("/:id").delete(deleteCategory);
 
 export default categoryRouter;

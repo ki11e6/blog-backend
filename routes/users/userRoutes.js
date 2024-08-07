@@ -1,5 +1,13 @@
 import express from "express";
-
+import {
+  userRegister,
+  userLogin,
+  userProfile,
+  userLogout,
+  getAllUsers,
+  deleteUser,
+  updateUser,
+} from "../../controllers/users/userController.js";
 const userRouter = express.Router();
 
 /*
@@ -8,16 +16,7 @@ const userRouter = express.Router();
  * access: public
  * description: register new user
  */
-userRouter.route("/register").post((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "user registered",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+userRouter.route("/register").post(userRegister);
 
 /*
  * route: /api/v1/users/login
@@ -25,33 +24,15 @@ userRouter.route("/register").post((req, res) => {
  * access: public
  * description: login user
  */
-userRouter.route("/login").post((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "user logged in",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+userRouter.route("/login").post(userLogin);
 
 /*
- * route: /api/v1/users/profile
+ * route: /api/v1/users/profile/:id
  * method: GET
  * access: private
  * description: get user profile
  */
-userRouter.route("/profile/:id").get((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "user profile",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+userRouter.route("/profile/:id").get(userProfile);
 
 /*
  * route: /api/v1/users/logout
@@ -59,16 +40,7 @@ userRouter.route("/profile/:id").get((req, res) => {
  * access: private
  * description: logout user
  */
-userRouter.route("/logout").get((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "user logged out",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+userRouter.route("/logout").get(userLogout);
 
 /*
  * route: /api/v1/users/
@@ -76,16 +48,7 @@ userRouter.route("/logout").get((req, res) => {
  * access: private/admin
  * description: get all users
  */
-userRouter.route("/").get((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "all users",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+userRouter.route("/").get(getAllUsers);
 
 /*
  * route: /api/v1/users/:id
@@ -93,16 +56,7 @@ userRouter.route("/").get((req, res) => {
  * access: private/admin
  * description: delete user
  */
-userRouter.route("/:id").delete((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "user deleted",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+userRouter.route("/:id").delete(deleteUser);
 
 /*
  * route: /api/v1/users/:id
@@ -110,14 +64,5 @@ userRouter.route("/:id").delete((req, res) => {
  * access: private/admin
  * description: update user
  */
-userRouter.route("/:id").put((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "user updated",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+userRouter.route("/:id").put(updateUser);
 export default userRouter;

@@ -1,5 +1,11 @@
 import express from "express";
-
+import {
+  getAllPosts,
+  createPost,
+  getPostDetails,
+  updatePost,
+  deletePost,
+} from "../../controllers/posts/postController.js";
 const postRouter = express.Router();
 
 /*
@@ -8,16 +14,7 @@ const postRouter = express.Router();
  * access: public
  * description: all post
  */
-postRouter.route("/all").get((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "all posts",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+postRouter.route("/all").get(getAllPosts);
 
 /*
  * route: /api/v1/posts
@@ -25,16 +22,7 @@ postRouter.route("/all").get((req, res) => {
  * access: private
  * description: create new post
  */
-postRouter.route("/").post((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "post created",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+postRouter.route("/").post(createPost);
 
 /*
  * route: /api/v1/posts/:id
@@ -42,16 +30,7 @@ postRouter.route("/").post((req, res) => {
  * access: public
  * description: get post details
  */
-postRouter.route("/:id").get((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "post details",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+postRouter.route("/:id").get(getPostDetails);
 
 /*
  * route: /api/v1/posts/:id
@@ -59,16 +38,7 @@ postRouter.route("/:id").get((req, res) => {
  * access: private
  * description: update post
  */
-postRouter.route("/:id").put((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "post updated",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+postRouter.route("/:id").put(updatePost);
 
 /*
  * route: /api/v1/posts/:id
@@ -76,14 +46,5 @@ postRouter.route("/:id").put((req, res) => {
  * access: private
  * description: delete post
  */
-postRouter.route("/:id").delete((req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: "post deleted",
-    });
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+postRouter.route("/:id").delete(deletePost);
 export default postRouter;
