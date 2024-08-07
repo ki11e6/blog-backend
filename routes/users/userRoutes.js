@@ -18,6 +18,7 @@ userRouter.route("/register").post((req, res) => {
     res.json(error.message);
   }
 });
+
 /*
  * route: /api/v1/users/login
  * method: POST
@@ -34,6 +35,7 @@ userRouter.route("/login").post((req, res) => {
     res.json(error.message);
   }
 });
+
 /*
  * route: /api/v1/users/profile
  * method: GET
@@ -50,6 +52,7 @@ userRouter.route("/profile/:id").get((req, res) => {
     res.json(error.message);
   }
 });
+
 /*
  * route: /api/v1/users/logout
  * method: GET
@@ -66,6 +69,7 @@ userRouter.route("/logout").get((req, res) => {
     res.json(error.message);
   }
 });
+
 /*
  * route: /api/v1/users/
  * method: GET
@@ -82,6 +86,7 @@ userRouter.route("/").get((req, res) => {
     res.json(error.message);
   }
 });
+
 /*
  * route: /api/v1/users/:id
  * method: DELETE
@@ -98,6 +103,7 @@ userRouter.route("/:id").delete((req, res) => {
     res.json(error.message);
   }
 });
+
 /*
  * route: /api/v1/users/:id
  * method: PUT

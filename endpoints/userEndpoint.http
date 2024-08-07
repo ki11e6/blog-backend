@@ -1,7 +1,6 @@
 ### User Register
 POST http://localhost:3000/api/v1/users/register HTTP/1.1
 
-
 ### User Logins
 POST http://localhost:3000/api/v1/users/login HTTP/1.1
 

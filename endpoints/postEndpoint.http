@@ -1,0 +1,14 @@
+### All Post
+GET http://localhost:3000/api/v1/posts/all HTTP/1.1
+
+### Create Post
+POST http://localhost:3000/api/v1/posts/ HTTP/1.1
+
+### Get Post with ID
+GET http://localhost:3000/api/v1/posts/:22 HTTP/1.1
+
+### Update Post
+PUT http://localhost:3000/api/v1/posts/:22 HTTP/1.1
+
+### Delete Post
+DELETE http://localhost:3000/api/v1/posts/:22 HTTP/1.1

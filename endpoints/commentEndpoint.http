@@ -1,0 +1,11 @@
+### Create Comment
+POST http://localhost:3000/api/v1/comments/ HTTP/1.1
+
+### Get Comment with ID
+GET http://localhost:3000/api/v1/comments/:22 HTTP/1.1
+
+### Update Comment
+PUT http://localhost:3000/api/v1/comments/:22 HTTP/1.1
+
+### Delete Comment
+DELETE http://localhost:3000/api/v1/comments/:22 HTTP/1.1
