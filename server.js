@@ -1,6 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import dbConnect from "./config/dbConnect.js";
+
 import userRouter from "./routes/users/userRoutes.js";
 import postRouter from "./routes/posts/postRoutes.js";
 import commentRouter from "./routes/comments/commentRoutes.js";

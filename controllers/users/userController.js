@@ -1,14 +1,31 @@
+import User from "../../models/User/User.js";
+
 /*
  * route: /api/v1/users/register
  * method: post
  * access: public
  * description: register new user
  */
-const userRegister = (req, res) => {
+const userRegister = async (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
   try {
+    //check if user exist
+    const userFound = await User.findOne({ email });
+    if (userFound) {
+      return res.json({
+        message: "user already exist",
+      });
+    }
+    //Create new user
+    const newUser = await User.create({
+      firstName,
+      lastName,
+      email,
+      password,
+    });
     res.json({
       status: "success",
-      data: "user registered",
+      data: newUser,
     });
   } catch (error) {
     res.json(error.message);

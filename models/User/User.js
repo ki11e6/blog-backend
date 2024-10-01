@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 const userSchema = new mongoose.Schema(
   {
-    firstname: {
+    firstName: {
       type: String,
       required: [true, "firstname is required"],
       trim: true,
     },
-    lastname: {
+    lastName: {
       type: String,
       required: [true, "lastname is required"],
       trim: true,
@@ -101,7 +101,7 @@ const userSchema = new mongoose.Schema(
 const SALT_ROUNDS = 10;
 
 // hashing password
-userSchema.pre("save", async (next) => {
+userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   try {
     const salt = await bcrypt.genSalt(SALT_ROUNDS);
