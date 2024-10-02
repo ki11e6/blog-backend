@@ -12,9 +12,19 @@ withCredentials: true
 }
 ### User Logins
 POST http://localhost:3000/api/v1/users/login HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "firstName": "sharath",
+  "lastName": "kumar",
+  "password": "12345678",
+  "email": "sharath@example.com"
+}
 
 ### User Profile
-GET http://localhost:3000/api/v1/users/profile/:12 HTTP/1.1
+GET http://localhost:3000/api/v1/users/profile/66fc32870250de5eb064a04d HTTP/1.1
 
 ### User Logout
 GET http://localhost:3000/api/v1/users/logout HTTP/1.1

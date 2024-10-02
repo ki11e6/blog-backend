@@ -1,5 +1,5 @@
 import User from "../../models/User/User.js";
-
+import { generateToken } from "../../utils/generateToken.js";
 /*
  * route: /api/v1/users/register
  * method: post
@@ -24,7 +24,7 @@ const userRegister = async (req, res) => {
       password,
     });
     res.json({
-      status: "success",
+      status: "new uer created successfully",
       data: newUser,
     });
   } catch (error) {
@@ -38,12 +38,26 @@ const userRegister = async (req, res) => {
  * access: public
  * description: login user
  */
-const userLogin = (req, res) => {
+const userLogin = async (req, res) => {
+  const { email, password } = req.body;
   try {
-    res.json({
-      status: "success",
-      data: "user logged in",
-    });
+    //check if user exist
+    const userFound = await User.findOne({ email });
+    if (userFound && (await userFound.comparePassword(password))) {
+      res.json({
+        status: "login successfully",
+        data: {
+          firstName: userFound.firstName,
+          lastName: userFound.lastName,
+          email: userFound.email,
+          isAdmin: userFound.isAdmin,
+          token: await generateToken({ Id: userFound._id }),
+        },
+      });
+    } else {
+      res.status(401);
+      throw new Error("Invalid login credentials");
+    }
   } catch (error) {
     res.json(error.message);
   }
@@ -55,12 +69,19 @@ const userLogin = (req, res) => {
  * access: private
  * description: get user profile
  */
-const userProfile = (req, res) => {
+const userProfile = async (req, res) => {
+  const { id } = req.params;
   try {
-    res.json({
-      status: "success",
-      data: "user profile",
-    });
+    const userFound = await User.findOne({ _id: id });
+    if (userFound) {
+      res.json({
+        status: "success",
+        data: userFound,
+      });
+    } else {
+      res.status(404);
+      throw new Error("User not found");
+    }
   } catch (error) {
     res.json(error.message);
   }
