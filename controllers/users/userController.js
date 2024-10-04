@@ -1,5 +1,8 @@
 import User from "../../models/User/User.js";
 import { generateToken } from "../../utils/generateToken.js";
+import { getTokenFromHeader } from "../../utils/getTokenFromHeader.js";
+import { verifyToken } from "../../utils/verifyToken.js";
+
 /*
  * route: /api/v1/users/register
  * method: post
@@ -51,7 +54,7 @@ const userLogin = async (req, res) => {
           lastName: userFound.lastName,
           email: userFound.email,
           isAdmin: userFound.isAdmin,
-          token: await generateToken({ Id: userFound._id }),
+          token: await generateToken({ userId: userFound._id }),
         },
       });
     } else {
@@ -70,9 +73,8 @@ const userLogin = async (req, res) => {
  * description: get user profile
  */
 const userProfile = async (req, res) => {
-  const { id } = req.params;
   try {
-    const userFound = await User.findOne({ _id: id });
+    const userFound = await User.findOne({ _id: req.userId });
     if (userFound) {
       res.json({
         status: "success",

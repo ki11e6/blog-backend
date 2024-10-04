@@ -1,5 +1,6 @@
 import express from "express";
 import checkOjectId from "../../middlewares/checkOjectId.js";
+import { isLogin } from "../../middlewares/isLogin.js";
 import {
   userRegister,
   userLogin,
@@ -15,7 +16,7 @@ userRouter.route("/register").post(userRegister);
 
 userRouter.route("/login").post(userLogin);
 
-userRouter.route("/profile/:id").get(checkOjectId, userProfile);
+userRouter.route("/profile").get(isLogin, userProfile);
 
 userRouter.route("/logout").get(userLogout);
 
