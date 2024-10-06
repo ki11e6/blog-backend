@@ -4,7 +4,7 @@ import { verifyToken } from "../utils/verifyToken.js";
 export const isLogin = async (req, res, next) => {
   const token = getTokenFromHeader(req);
   const { userId } = await verifyToken(token);
-  if (!userId) {
+  if (!userId || !token) {
     res.status(401);
     return res.json({
       message: "Invalid/Expired token, please login again",

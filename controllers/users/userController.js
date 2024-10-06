@@ -31,6 +31,12 @@ const userRegister = async (req, res) => {
       data: newUser,
     });
   } catch (error) {
+    // Handle Mongoose validation error
+    if (error.name === "ValidationError") {
+      return res.status(400).json({
+        message: error.message,
+      });
+    }
     res.json(error.message);
   }
 };

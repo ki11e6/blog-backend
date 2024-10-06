@@ -22,7 +22,7 @@ userRouter.route("/logout").get(userLogout);
 
 userRouter.route("/").get(getAllUsers);
 
-userRouter.route("/:id").delete(deleteUser);
+userRouter.route("/:id").delete(isLogin, checkOjectId, deleteUser);
 
 userRouter.route("/:id").put(updateUser);
 export default userRouter;

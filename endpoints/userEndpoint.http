@@ -5,10 +5,9 @@ Accept: application/json
 withCredentials: true
 
 {
-  "firstName": "sharath",
   "lastName": "kumar",
   "password": "12345678",
-  "email": "sharath@example.com"
+  "email": "sharath@exampe.com"
 }
 ### User Logins
 POST http://localhost:3000/api/v1/users/login HTTP/1.1
@@ -36,8 +35,12 @@ GET http://localhost:3000/api/v1/users/logout HTTP/1.1
 ### All Users
 GET http://localhost:3000/api/v1/users HTTP/1.1
 
-### Delete User
-DELETE http://localhost:3000/api/v1/users/:12 HTTP/1.1
+### Delete Users
+DELETE http://localhost:3000/api/v1/users/66fc32870250de5eb064a04d HTTP/1.1
+Content-Type: application/json,
+Accept: application/json,
+withCredentials: true,
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI2NmZjMzI4NzAyNTBkZTVlYjA2NGEwNGQiLCJpYXQiOjE3MjgwNDQ5NTgsImV4cCI6MTcyODA1OTM1OH0.L6Ax-ZS69PHJVZPCZffyOOqktDx9Ecekitv7mBSYp4c
 
 ### Update User
 PUT http://localhost:3000/api/v1/users/:12 HTTP/1.1
