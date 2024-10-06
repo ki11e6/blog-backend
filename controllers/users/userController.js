@@ -9,7 +9,7 @@ import { verifyToken } from "../../utils/verifyToken.js";
  * access: public
  * description: register new user
  */
-const userRegister = async (req, res) => {
+const userRegister = async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
   try {
     //check if user exist
@@ -31,13 +31,7 @@ const userRegister = async (req, res) => {
       data: newUser,
     });
   } catch (error) {
-    // Handle Mongoose validation error
-    if (error.name === "ValidationError") {
-      return res.status(400).json({
-        message: error.message,
-      });
-    }
-    res.json(error.message);
+    next(error);
   }
 };
 
@@ -47,7 +41,7 @@ const userRegister = async (req, res) => {
  * access: public
  * description: login user
  */
-const userLogin = async (req, res) => {
+const userLogin = async (req, res, next) => {
   const { email, password } = req.body;
   try {
     //check if user exist
@@ -68,7 +62,7 @@ const userLogin = async (req, res) => {
       throw new Error("Invalid login credentials");
     }
   } catch (error) {
-    res.json(error.message);
+    next(error);
   }
 };
 
@@ -78,7 +72,7 @@ const userLogin = async (req, res) => {
  * access: private
  * description: get user profile
  */
-const userProfile = async (req, res) => {
+const userProfile = async (req, res, next) => {
   try {
     const userFound = await User.findOne({ _id: req.userId });
     if (userFound) {
@@ -91,7 +85,7 @@ const userProfile = async (req, res) => {
       throw new Error("User not found");
     }
   } catch (error) {
-    res.json(error.message);
+    next(error);
   }
 };
 
@@ -101,14 +95,14 @@ const userProfile = async (req, res) => {
  * access: private
  * description: logout user
  */
-const userLogout = (req, res) => {
+const userLogout = (req, res, next) => {
   try {
     res.json({
       status: "success",
       data: "user logged out",
     });
   } catch (error) {
-    res.json(error.message);
+    next(error);
   }
 };
 
@@ -118,14 +112,14 @@ const userLogout = (req, res) => {
  * access: private/admin
  * description: get all users
  */
-const getAllUsers = (req, res) => {
+const getAllUsers = (req, res, next) => {
   try {
     res.json({
       status: "success",
       data: "all users",
     });
   } catch (error) {
-    res.json(error.message);
+    next(error);
   }
 };
 
@@ -135,14 +129,14 @@ const getAllUsers = (req, res) => {
  * access: private/admin
  * description: delete user
  */
-const deleteUser = (req, res) => {
+const deleteUser = (req, res, next) => {
   try {
     res.json({
       status: "success",
       data: "user deleted",
     });
   } catch (error) {
-    res.json(error.message);
+    next(error);
   }
 };
 
@@ -152,14 +146,14 @@ const deleteUser = (req, res) => {
  * access: private/admin
  * description: update user
  */
-const updateUser = (req, res) => {
+const updateUser = (req, res, next) => {
   try {
     res.json({
       status: "success",
       data: "user updated",
     });
   } catch (error) {
-    res.json(error.message);
+    next(error);
   }
 };
 

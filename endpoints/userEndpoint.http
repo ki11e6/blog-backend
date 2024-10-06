@@ -5,6 +5,7 @@ Accept: application/json
 withCredentials: true
 
 {
+  "firstName": "sharath",
   "lastName": "kumar",
   "password": "12345678",
   "email": "sharath@exampe.com"
@@ -27,7 +28,7 @@ GET http://localhost:3000/api/v1/users/profile HTTP/1.1
 Content-Type: application/json,
 Accept: application/json,
 withCredentials: true,
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI2NmZjMzI4NzAyNTBkZTVlYjA2NGEwNGQiLCJpYXQiOjE3MjgwNDQ5NTgsImV4cCI6MTcyODA1OTM1OH0.L6Ax-ZS69PHJVZPCZffyOOqktDx9Ecekitv7mBSYp4c
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI2NmZjMzI4NzAyNTBkZTVlYjA2NGEwNGQiLCJpYXQiOjE3MjgyMzg0MTEsImV4cCI6MTcyODI1MjgxMX0.DrLO8XpnPrhL4Shfa1Gxg9lvEGIGgWLCXGNO0iW9CY4
 
 ### User Logout
 GET http://localhost:3000/api/v1/users/logout HTTP/1.1

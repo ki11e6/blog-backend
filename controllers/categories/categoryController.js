@@ -4,7 +4,7 @@
  * access: public
  * description: all categories
  */
-const getAllCategories = (req, res) => {
+const getAllCategories = (req, res, next) => {
   try {
     res.json({
       status: "success",
@@ -21,7 +21,7 @@ const getAllCategories = (req, res) => {
  * access: private
  * description: create new category
  */
-const createCategory = (req, res) => {
+const createCategory = (req, res, next) => {
   try {
     res.json({
       status: "success",
@@ -38,7 +38,7 @@ const createCategory = (req, res) => {
  * access: public
  * description: get category
  */
-const getCategory = (req, res) => {
+const getCategory = (req, res, next) => {
   try {
     res.json({
       status: "success",
@@ -55,7 +55,7 @@ const getCategory = (req, res) => {
  * access: private
  * description: update category
  */
-const updateCategory = (req, res) => {
+const updateCategory = (req, res, next) => {
   try {
     res.json({
       status: "success",
@@ -72,7 +72,7 @@ const updateCategory = (req, res) => {
  * access: private
  * description: delete category
  */
-const deleteCategory = (req, res) => {
+const deleteCategory = (req, res, next) => {
   try {
     res.json({
       status: "success",

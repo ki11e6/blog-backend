@@ -4,7 +4,7 @@
  * access: public
  * description: all post
  */
-const getAllPosts = (req, res) => {
+const getAllPosts = (req, res, next) => {
   try {
     res.json({
       status: "success",
@@ -21,7 +21,7 @@ const getAllPosts = (req, res) => {
  * access: private
  * description: create new post
  */
-const createPost = (req, res) => {
+const createPost = (req, res, next) => {
   try {
     res.json({
       status: "success",
@@ -38,7 +38,7 @@ const createPost = (req, res) => {
  * access: public
  * description: get post details
  */
-const getPostDetails = (req, res) => {
+const getPostDetails = (req, res, next) => {
   try {
     res.json({
       status: "success",
@@ -55,7 +55,7 @@ const getPostDetails = (req, res) => {
  * access: private
  * description: update post
  */
-const updatePost = (req, res) => {
+const updatePost = (req, res, next) => {
   try {
     res.json({
       status: "success",
@@ -72,7 +72,7 @@ const updatePost = (req, res) => {
  * access: private
  * description: delete post
  */
-const deletePost = (req, res) => {
+const deletePost = (req, res, next) => {
   try {
     res.json({
       status: "success",

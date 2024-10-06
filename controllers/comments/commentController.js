@@ -4,7 +4,7 @@
  * access: private
  * description: create new comment
  */
-const createComment = (req, res) => {
+const createComment = (req, res, next) => {
   try {
     res.json({
       status: "success",
@@ -21,7 +21,7 @@ const createComment = (req, res) => {
  * access: public
  * description: get single comment
  */
-const getComment = (req, res) => {
+const getComment = (req, res, next) => {
   try {
     res.json({
       status: "success",
@@ -38,7 +38,7 @@ const getComment = (req, res) => {
  * access: private
  * description: update comment
  */
-const updateComment = (req, res) => {
+const updateComment = (req, res, next) => {
   try {
     res.json({
       status: "success",
@@ -55,7 +55,7 @@ const updateComment = (req, res) => {
  * access: private
  * description: delete comment
  */
-const deleteComment = (req, res) => {
+const deleteComment = (req, res, next) => {
   try {
     res.json({
       status: "success",
