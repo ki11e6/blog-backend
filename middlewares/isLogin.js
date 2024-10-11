@@ -6,9 +6,7 @@ export const isLogin = async (req, res, next) => {
   const { userId } = await verifyToken(token);
   if (!userId || !token) {
     res.status(401);
-    return res.json({
-      message: "Invalid/Expired token, please login again",
-    });
+    return next(new Error("Invalid/Expired token, please login again"));
   } else {
     req.userId = userId;
     next();

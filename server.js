@@ -6,7 +6,7 @@ import userRouter from "./routes/users/userRoutes.js";
 import postRouter from "./routes/posts/postRoutes.js";
 import commentRouter from "./routes/comments/commentRoutes.js";
 import categoryRouter from "./routes/categories/categoryRoutes.js";
-import { errorHandler, notFoound } from "./middlewares/errorHandler.js";
+import { errorHandler, notFoound } from "./middlewares/globalErrorHandler.js";
 dbConnect();
 const app = express();
 const PORT = process.env.PORT || 9000;
