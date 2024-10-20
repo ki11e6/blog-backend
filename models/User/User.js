@@ -77,20 +77,31 @@ const userSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
-    accountType: {
-      type: String,
-      enum: ["Free", "Premium"],
-      default: "Free",
-    },
     posts: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Post",
       },
     ],
+    blocked: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    accountType: {
+      type: String,
+      enum: ["Free", "Premium"],
+      default: "Free",
+    },
     createdAt: {
       type: Date,
       default: Date.now,
+    },
+    userAward: {
+      type: String,
+      enum: ["Bronze", "Silver", "Gold"],
+      default: "Bronze",
     },
   },
   {

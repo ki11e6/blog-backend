@@ -18,7 +18,7 @@ app.use("/api/v1/posts", postRouter);
 app.use("/api/v1/comments", commentRouter);
 app.use("/api/v1/categories", categoryRouter);
 
-app.use(notFoound);
+app.use("*", notFoound);
 app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server is runngin on ${PORT}`));

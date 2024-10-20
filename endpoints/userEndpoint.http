@@ -8,7 +8,7 @@ withCredentials: true
   "firstName": "sharath",
   "lastName": "kumar",
   "password": "12345678",
-  "email": "sharath@exampe.com"
+  "email": "sharath@example.com"
 }
 ### User Logins
 POST http://localhost:3000/api/v1/users/login HTTP/1.1
@@ -20,7 +20,7 @@ withCredentials: true
   "firstName": "sharath",
   "lastName": "kumar",
   "password": "12345678",
-  "email": "sharath@exampe.com"
+  "email": "sharath@example.com"
 }
 
 ### User Profile
