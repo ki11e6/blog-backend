@@ -156,6 +156,35 @@ const updateUser = (req, res, next) => {
   }
 };
 
+/*
+ * route: /api/v1/users/:id/avatar
+ * method: POST
+ * access: private
+ * description: upload profile avatar
+ */
+const profileAvatarUpload = async (req, res, next) => {
+  try {
+    console.log(req.file);
+    const userFound = await User.findOne({ _id: req.userId });
+    if (!userFound) {
+      res.status(404);
+      throw new Error("User not found");
+    }
+    if (userFound.isBlocked) {
+      res.status(403);
+      throw new Error("User is blocked");
+    }
+    userFound.avatar = req.file.path;
+    await userFound.save();
+    res.json({
+      status: "success",
+      data: "User Avatar updated",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export {
   userRegister,
   userLogin,
@@ -164,4 +193,5 @@ export {
   getAllUsers,
   deleteUser,
   updateUser,
+  profileAvatarUpload,
 };

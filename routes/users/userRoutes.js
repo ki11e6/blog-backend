@@ -1,4 +1,5 @@
 import express from "express";
+import { upload } from "../../config/cloudinary.js";
 import checkOjectId from "../../middlewares/checkOjectId.js";
 import { isLogin } from "../../middlewares/isLogin.js";
 import {
@@ -9,6 +10,7 @@ import {
   getAllUsers,
   deleteUser,
   updateUser,
+  profileAvatarUpload,
 } from "../../controllers/users/userController.js";
 const userRouter = express.Router();
 
@@ -22,7 +24,13 @@ userRouter.route("/logout").get(userLogout);
 
 userRouter.route("/").get(getAllUsers);
 
-userRouter.route("/:id").delete(isLogin, checkOjectId, deleteUser);
+userRouter
+  .route("/:id/avatar")
+  .post(isLogin, checkOjectId, upload.single("avatar"), profileAvatarUpload);
 
-userRouter.route("/:id").put(updateUser);
+userRouter
+  .route("/:id")
+  .put(updateUser)
+  .delete(isLogin, checkOjectId, deleteUser);
+
 export default userRouter;
